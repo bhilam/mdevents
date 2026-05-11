@@ -632,6 +632,34 @@
             }
         }
 
+        // -----------------------------
+        // PORTFOLIO IMAGE CAROUSELS
+        // -----------------------------
+        function initCarousels() {
+            const carousels = document.querySelectorAll('.overflow-hidden.relative');
+
+            carousels.forEach((container) => {
+                const slides = container.querySelectorAll('.carousel-slide');
+                if (slides.length <= 1) return;
+
+                let index = 0;
+
+                setInterval(() => {
+                    // hide current
+                    slides[index].classList.remove('opacity-100');
+                    slides[index].classList.add('opacity-0');
+
+                    // next index
+                    index = (index + 1) % slides.length;
+
+                    // show next
+                    slides[index].classList.remove('opacity-0');
+                    slides[index].classList.add('opacity-100');
+                }, 2500);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', initCarousels);
 let activeTestimonial = 0;
 const totalTestimonials = 4;
 
