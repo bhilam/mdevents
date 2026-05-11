@@ -55,59 +55,83 @@
             background-color: #e7e5e4;
             color: #1c1917;
         }
-/* Elegant Scrollbar for Testimonial Modal */
-#testimonialModal .overflow-y-auto {
-    scrollbar-width: thin;
-    scrollbar-color: #d4af37 #292524;
-}
+        /* Elegant Scrollbar for Testimonial Modal */
+        #testimonialModal .overflow-y-auto {
+            scrollbar-width: thin;
+            scrollbar-color: #d4af37 #292524;
+        }
 
-/* Chrome / Edge / Safari */
-#testimonialModal .overflow-y-auto::-webkit-scrollbar {
-    width: 6px;
-}
+        /* Chrome / Edge / Safari */
+        #testimonialModal .overflow-y-auto::-webkit-scrollbar {
+            width: 6px;
+        }
 
-#testimonialModal .overflow-y-auto::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.04);
-    border-radius: 999px;
-    backdrop-filter: blur(10px);
-}
+        #testimonialModal .overflow-y-auto::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.04);
+            border-radius: 999px;
+            backdrop-filter: blur(10px);
+        }
 
-#testimonialModal .overflow-y-auto::-webkit-scrollbar-thumb {
-    background: linear-gradient(
-        to bottom,
-        #d4af37,
-        #b68b2d
-    );
-    border-radius: 999px;
-    border: 2px solid transparent;
-    background-clip: padding-box;
-}
+        #testimonialModal .overflow-y-auto::-webkit-scrollbar-thumb {
+            background: linear-gradient(
+                to bottom,
+                #d4af37,
+                #b68b2d
+            );
+            border-radius: 999px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
 
-#testimonialModal .overflow-y-auto::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(
-        to bottom,
-        #e6c65a,
-        #c89b34
-    );
-}
+        #testimonialModal .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(
+                to bottom,
+                #e6c65a,
+                #c89b34
+            );
+        }
 
-#testimonialModal .overflow-y-auto::-webkit-scrollbar-corner {
-    background: transparent;
-}
-@keyframes modalReveal {
-    from {
-        opacity: 0;
-        transform: scale(0.96) translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
+        #testimonialModal .overflow-y-auto::-webkit-scrollbar-corner {
+            background: transparent;
+        }
+        @keyframes modalReveal {
+            from {
+                opacity: 0;
+                transform: scale(0.96) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
 
-.modal-animate {
-    animation: modalReveal 500ms cubic-bezier(0.16, 1, 0.3, 1);
-}
+        .modal-animate {
+            animation: modalReveal 500ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .menu-item {
+            opacity: 0;
+            transform: translateY(20px);
+            filter: blur(6px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .menu-item.show {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+        .menu-item {
+            display: inline-block;
+            will-change: transform;
+        }
+        #testimonialModal .overflow-y-auto {
+            scroll-behavior: smooth;
+        }
+        
+        #testimonialModalText {
+            transition: opacity 0.6s ease;
+            white-space: pre-line;
+        }
     </style>
 </head>
 <body class="bg-white font-sans text-stone-900 overflow-x-hidden antialiased">
@@ -133,7 +157,7 @@
 
 <!-- CENTER LOGO + BRAND -->
 <a href="#home"
-   class="absolute left-1/2 transform -translate-x-1/2 z-50 cursor-pointer flex items-center gap-3">
+   class="absolute left-1/2 transform -translate-x-1/2 z-50 cursor-pointer flex items-center gap-3 transition-transform transition-opacity duration-500">
 
     <!-- Brand Icon -->
     <img
@@ -145,7 +169,7 @@
 
     <!-- Brand Text -->
     <div class="flex flex-col leading-none">
-        <span class="text-white font-serif text-xl md:text-3xl tracking-[0.18em] uppercase drop-shadow-lg">
+        <span class="text-white font-serif text-xl md:text-4xl tracking-[0.18em] uppercase drop-shadow-lg">
             Majestic Dawn
         </span>
     </div>
@@ -161,12 +185,11 @@
     <!-- Full Screen Menu Overlay -->
     <div id="mobileMenu" class="fixed inset-0 bg-black z-40 transition-transform duration-700 ease-in-out flex flex-col justify-center items-center -translate-y-full">
         <div class="flex flex-col space-y-8 text-center">
-            <a href="#home" onclick="toggleMenu()" class="text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">Home</a>
-            <a href="#philosophy" onclick="toggleMenu()" class="text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">Philosophy</a>
-            <a href="#portfolio" onclick="toggleMenu()" class="text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">Portfolio</a>
-            <a href="#services" onclick="toggleMenu()" class="text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">Services</a>
-            <a href="#testimonials" onclick="toggleMenu()" class="text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">Testimonials</a>
-            <a href="#inquire" onclick="toggleMenu()" class="text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">Inquire</a>
+            <a href="#philosophy" onclick="toggleMenu()" class="menu-item text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">Philosophy</a>
+            <a href="#portfolio" onclick="toggleMenu()" class="menu-item text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">Portfolio</a>
+            <a href="#services" onclick="toggleMenu()" class="menu-item text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">Services</a>
+            <a href="#testimonials" onclick="toggleMenu()" class="menu-item text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">Testimonials</a>
+            <a href="#inquire" onclick="toggleMenu()" class="menu-item text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">Inquire</a>
         </div>
     </div>
 
@@ -360,7 +383,7 @@
 
     <button onclick="openTestimonial(this)"
         class="testimonial-readmore text-xs uppercase tracking-[0.25em] text-[#d4af37] hover:text-white transition-colors"
-        data-full='From our first conversation with Majestic Dawn Event Planning Services, we knew we had found the right team for our house-warming services. Their communication was so open and thorough that we never had to worry about what was happening next or if details were being missed. They went above and beyond what we had asked for, putting real effort in making us comfortable throughout the entire planning process. The quality of their work was truly amazing. They handled everything with such care and attention that our day felt seamless and special. We got rave review from our guests about how well everything was organized and executed. We can&apos;t recommend Majestic Dawn Event Planning Services enough to families looking for a planner who will go the extra mile.'>
+        data-full='From our first conversation with Majestic Dawn Event Planning Services, we knew we had found the right team for our house-warming services.\n\nTheir communication was so open and thorough that we never had to worry about what was happening next or if details were being missed. They went above and beyond what we had asked for, putting real effort in making us comfortable throughout the entire planning process.\n\nThe quality of their work was truly amazing. They handled everything with such care and attention that our day felt seamless and special.\n\nWe got rave review from our guests about how well everything was organized and executed.\n\nWe can&apos;t recommend Majestic Dawn Event Planning Services enough to families looking for a planner who will go the extra mile.'>
         Read More
     </button>
 </div>
@@ -418,7 +441,7 @@
 
     <button onclick="openTestimonial(this)"
         class="testimonial-readmore text-xs uppercase tracking-[0.25em] text-[#d4af37] hover:text-white transition-colors"
-        data-full="When we started planning for my daughter's sixteen birthday, we did not have the slightest idea about what and how to go about planning for it. Coincidentally, and very thankfully, we came across Majestic Dawn Event Planner. From the first meeting onwards we got the feeling as if we were planning the event with our friends. They took the time to listen to our ideas, questions and concerns and came back with their evaluation and plan. They even provides justification in some cases where they thought why our idea might not work out. The attention to details, their thoughtfulness and caring for the event planning as if it were their own and seeing it through the execution is the reason we are extremely satisfied with MD Events and would definitely recommend them. We also liked the vendors they recommended, who were pretty reasonable, professional and courteous. The best part about the experience was on the day of the event where we didn't really have to worry about logistics or management as MD Events team took care of management with vendors, setup, tear down and everything in-between. Thank you, MD Event Planner team, for everything you did to make our daughter's birthday unforgettable!!! We are eternally grateful!! Looking forward to working with you in future and we'd definitely recommend them.">
+        data-full="When we started planning for my daughter's sixteen birthday, we did not have the slightest idea about what and how to go about planning for it. Coincidentally, and very thankfully, we came across Majestic Dawn Event Planner.\n\nFrom the first meeting onwards we got the feeling as if we were planning the event with our friends. They took the time to listen to our ideas, questions and concerns and came back with their evaluation and plan. They even provides justification where they thought why our idea might not work out.\n\nThe attention to details, their thoughtfulness and caring for the event planning as if it were their own and seeing it through the execution is the reason we are extremely satisfied with MD Events and would definitely recommend them. We also liked the vendors they recommended, who were pretty reasonable, professional and courteous.\n\nThe best part about the experience was on the day of the event where we didn't really have to worry about logistics or management as MD Events team took care of management with vendors, setup, tear down and everything in-between.\n\nThank you, MD Event Planner team, for everything you did to make our daughter's birthday unforgettable!!! We are eternally grateful!! Looking forward to working with you in future and we'd definitely recommend them.">
         Read More
     </button>
 </div>
@@ -539,7 +562,7 @@
     <!-- Interactive Logic (Vanilla Javascript) -->
     <script>
         // Set current year
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+        document.getElementById('current-year').innerHTML = new Date().getFullYear();
 
         // Navbar Scroll Logic
         const navbar = document.getElementById('navbar');
@@ -570,145 +593,198 @@
             const menuIcon = document.getElementById('menu-icon');
             const closeIcon = document.getElementById('close-icon');
             const menuText = document.getElementById('menu-text');
+            const logo = document.querySelector('nav a[href="#home"]');
 
             isMenuOpen = !isMenuOpen;
 
             if (isMenuOpen) {
                 mobileMenu.classList.remove('-translate-y-full');
                 mobileMenu.classList.add('translate-y-0');
+
                 menuIcon.classList.add('hidden');
                 closeIcon.classList.remove('hidden');
-                menuText.textContent = 'Close';
+                menuText.innerHTML = 'Close';
+
+                logo.classList.add('opacity-0', 'scale-90', 'pointer-events-none');
                 
-                // Force navbar style
-                navbar.classList.add('bg-black', 'py-4', 'shadow-xl');
-                navbar.classList.remove('bg-transparent', 'py-8');
-                logoImg.classList.add('w-40', 'md:w-48');
-                logoImg.classList.remove('w-56', 'md:w-72', 'drop-shadow-2xl');
+                // ✨ staggered reveal
+                const items = document.querySelectorAll('.menu-item');
+                items.forEach((item, i) => {
+                    setTimeout(() => {
+                        item.classList.add('show');
+                    }, 120 * i);
+                });
+
             } else {
                 mobileMenu.classList.add('-translate-y-full');
                 mobileMenu.classList.remove('translate-y-0');
+
                 closeIcon.classList.add('hidden');
                 menuIcon.classList.remove('hidden');
-                menuText.textContent = 'Menu';
+                menuText.innerHTML = 'Menu';
 
-                // Re-evaluate scroll position
-                if (window.scrollY <= 50) {
-                    navbar.classList.add('bg-transparent', 'py-8');
-                    navbar.classList.remove('bg-black', 'py-4', 'shadow-xl');
-                    logoImg.classList.add('w-56', 'md:w-72', 'drop-shadow-2xl');
-                    logoImg.classList.remove('w-40', 'md:w-48');
-                }
+                logo.classList.remove('opacity-0', 'scale-90', 'pointer-events-none');
+
+                // reset animation
+                document.querySelectorAll('.menu-item').forEach(item => {
+                    item.classList.remove('show');
+                });
             }
         }
 
-        // Testimonial Carousel Logic
-        let activeTestimonial = 0;
-        const totalTestimonials = 4;
+let activeTestimonial = 0;
+const totalTestimonials = 4;
 
-        function updateTestimonials() {
-            for(let i = 0; i < totalTestimonials; i++) {
-                const slide = document.getElementById(`testimonial-${i}`);
-                const dot = document.getElementById(`dot-${i}`);
+/* -----------------------------
+   PREVIEW TEXT INIT (FIXED)
+------------------------------*/
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.testimonial-preview').forEach(el => {
+        const text = el.getAttribute('data-full');
+        if (!text) return;
 
-                if (i === activeTestimonial) {
-                    // Show active
-                    slide.classList.remove('opacity-0', 'translate-y-8', '-z-10', 'pointer-events-none');
-                    slide.classList.add('opacity-100', 'translate-y-0', 'z-10');
-                    dot.classList.remove('bg-stone-600', 'w-2');
-                    dot.classList.add('bg-[#d4af37]', 'w-6');
-                } else {
-                    // Hide inactive
-                    slide.classList.add('opacity-0', 'translate-y-8', '-z-10', 'pointer-events-none');
-                    slide.classList.remove('opacity-100', 'translate-y-0', 'z-10');
-                    dot.classList.add('bg-stone-600', 'w-2');
-                    dot.classList.remove('bg-[#d4af37]', 'w-6');
-                }
-            }
+        const cleaned = text
+            .replace(/\\n/g, ' ')     // safe flatten for preview
+            .replace(/\s+/g, ' ')
+            .trim();
+
+        // First sentence only (safe fallback)
+        const firstSentence = cleaned.match(/[^.!?]+[.!?]+/)?.[0] || cleaned;
+
+        el.textContent = firstSentence.trim();
+    });
+});
+
+/* -----------------------------
+   SLIDER LOGIC (UNCHANGED BUT CLEAN)
+------------------------------*/
+function updateTestimonials() {
+    for (let i = 0; i < totalTestimonials; i++) {
+        const slide = document.getElementById(`testimonial-${i}`);
+        const dot = document.getElementById(`dot-${i}`);
+
+        if (i === activeTestimonial) {
+            slide.classList.remove('opacity-0', 'translate-y-8', '-z-10', 'pointer-events-none');
+            slide.classList.add('opacity-100', 'translate-y-0', 'z-10');
+
+            dot.classList.remove('bg-stone-600', 'w-2');
+            dot.classList.add('bg-[#d4af37]', 'w-6');
+        } else {
+            slide.classList.add('opacity-0', 'translate-y-8', '-z-10', 'pointer-events-none');
+            slide.classList.remove('opacity-100', 'translate-y-0', 'z-10');
+
+            dot.classList.add('bg-stone-600', 'w-2');
+            dot.classList.remove('bg-[#d4af37]', 'w-6');
         }
+    }
+}
 
-        function nextTestimonial() {
-            activeTestimonial = (activeTestimonial === totalTestimonials - 1) ? 0 : activeTestimonial + 1;
-            updateTestimonials();
+function nextTestimonial() {
+    activeTestimonial = (activeTestimonial + 1) % totalTestimonials;
+    updateTestimonials();
+}
+
+function prevTestimonial() {
+    activeTestimonial = (activeTestimonial - 1 + totalTestimonials) % totalTestimonials;
+    updateTestimonials();
+}
+
+function setTestimonial(index) {
+    activeTestimonial = index;
+    updateTestimonials();
+}
+
+/* -----------------------------
+   MODAL (FIXED LINE BREAKS)
+------------------------------*/
+function openTestimonial(el) {
+    const modal = document.getElementById('testimonialModal');
+    const modalText = document.getElementById('testimonialModalText');
+    const modalContent = modal.querySelector('div');
+
+    modal.addEventListener('click', (e) => {
+        // Close only if clicking the dark overlay, not the modal box
+        if (!modalContent.contains(e.target)) {
+            closeTestimonial();
         }
+    });
+    modalContent.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
 
-        function prevTestimonial() {
-            activeTestimonial = (activeTestimonial === 0) ? totalTestimonials - 1 : activeTestimonial - 1;
-            updateTestimonials();
+    let fullText = el.getAttribute('data-full') || '';
+
+    // normalize line breaks
+    fullText = fullText.replace(/\\n/g, '\n');
+
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.classList.add('overflow-hidden');
+
+    // ✨ NEW: simple fade-in text (no typewriter)
+    modalText.style.opacity = 0;
+    modalText.textContent = fullText;
+
+    requestAnimationFrame(() => {
+        modalText.style.transition = 'opacity 600ms ease';
+        modalText.style.opacity = 1;
+    });
+}
+
+/* -----------------------------
+   CLOSE MODAL
+------------------------------*/
+function closeTestimonial() {
+    const modal = document.getElementById('testimonialModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.classList.remove('overflow-hidden');
+}
+
+/* background click close */
+document.getElementById('testimonialModal')
+    .addEventListener('click', function (e) {
+        if (e.target === this) closeTestimonial();
+    });
+    
+    /* -----------------------------
+       MOBILE SWIPE SUPPORT
+    ------------------------------*/
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const testimonialContainer = document.querySelector('#testimonials .relative.min-h-\\[250px\\]');
+
+    if (testimonialContainer) {
+
+        testimonialContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+        testimonialContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    }
+
+    function handleTouchStart(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }
+
+    function handleTouchEnd(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+    }
+
+    function handleSwipeGesture() {
+        const swipeDistance = touchEndX - touchStartX;
+
+        // ignore small accidental swipes
+        if (Math.abs(swipeDistance) < 50) return;
+
+        if (swipeDistance < 0) {
+            // swipe left → next
+            nextTestimonial();
+        } else {
+            // swipe right → previous
+            prevTestimonial();
         }
-
-        function setTestimonial(index) {
-            activeTestimonial = index;
-            updateTestimonials();
-        }
-        function initCarousel(className, interval = 3000) {
-            const slides = document.querySelectorAll(`.${className}`);
-
-            if (!slides.length) return;
-
-            let current = 0;
-
-            setInterval(() => {
-
-                slides[current].classList.remove('opacity-100');
-                slides[current].classList.add('opacity-0');
-
-                current = (current + 1) % slides.length;
-
-                slides[current].classList.remove('opacity-0');
-                slides[current].classList.add('opacity-100');
-
-            }, interval);
-        }
-
-        // Initialize all carousels
-        initCarousel('engagement-slide', 3500);
-        initCarousel('prewedding-slide', 3000);
-        initCarousel('house-slide', 4000);
-        initCarousel('rite-slide', 3500);
-        initCarousel('birthday-slide', 3200);
-
-        // Truncate testimonials automatically
-        document.querySelectorAll('.testimonial-preview').forEach(el => {
-
-            const fullText = el.dataset.full.trim();
-
-            if(fullText.length > 150) {
-                el.textContent = `"${fullText.substring(0, 150)}..."`;
-            } else {
-                el.textContent = `"${fullText}"`;
-            }
-        });
-
-        // Open modal
-        function openTestimonial(element) {
-            const modal = document.getElementById('testimonialModal');
-            const modalText = document.getElementById('testimonialModalText');
-
-            modalText.textContent = element.dataset.full;
-
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-
-            document.body.classList.add('overflow-hidden');
-        }
-
-        // Close modal
-        function closeTestimonial() {
-            const modal = document.getElementById('testimonialModal');
-
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-
-            document.body.classList.remove('overflow-hidden');
-        }
-
-        // Close on background click
-        document.getElementById('testimonialModal').addEventListener('click', function(e) {
-            if(e.target === this) {
-                closeTestimonial();
-            }
-        });
+    }
     </script>
 <!-- TESTIMONIAL MODAL -->
 <div id="testimonialModal"
@@ -730,7 +806,7 @@
                class="text-lg md:text-2xl font-serif font-light leading-[2.2rem] md:leading-[3rem] text-stone-100 italic tracking-wide">
             </p>
 <div class="text-[#d4af37] text-6xl font-serif leading-none -mb-2 opacity-80">
-    “
+    ”
 </div>
             <div class="mt-10 pt-6 border-t border-white/10">
                 <p class="text-xs tracking-[0.35em] uppercase text-[#d4af37]">
