@@ -1,844 +1,514 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Majestic Dawn Events | Luxury Event Planning</title>
-    <meta name="description" content="Premier event design and production firm. We curate bespoke experiences defined by effortless elegance, tailored design, and impeccable hospitality.">
-    
-    <!-- Tailwind CSS for super-fast styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Majestic Dawn Events | Luxury Event Planning</title>
+        <meta name="description" content="Premier event design and production firm. We curate bespoke experiences defined by effortless elegance, tailored design, and impeccable hospitality.">
 
-    <!-- Custom Tailwind Configuration 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        stone: {
-                            50: '#fafaf9',
-                            100: '#f5f5f4',
-                            200: '#e7e5e4',
-                            300: '#d6d3d1',
-                            400: '#a8a29e',
-                            500: '#78716c',
-                            600: '#57534e',
-                            800: '#292524',
-                            900: '#1c1917',
+        <!-- Tailwind CSS for super-fast styling -->
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+        <!-- Custom Tailwind Configuration -->
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ['Inter', 'sans-serif'],
+                            serif: ['Playfair Display', 'serif'],
+                        },
+                        colors: {
+                            stone: {
+                                50: '#fafaf9',
+                                100: '#f5f5f4',
+                                200: '#e7e5e4',
+                                300: '#d6d3d1',
+                                400: '#a8a29e',
+                                500: '#78716c',
+                                600: '#57534e',
+                                800: '#292524',
+                                900: '#1c1917',
+                            }
                         }
                     }
                 }
             }
-        }
-    </script>-->
+        </script>
 
-    <!-- Custom Animations -->
-    <style>
-        @keyframes ken-burns {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-        .animate-ken-burns {
-            animation: ken-burns 30s ease-out forwards;
-        }
-        /* Custom Selection Color */
-        ::selection {
-            background-color: #e7e5e4;
-            color: #1c1917;
-        }
-        /* Elegant Scrollbar for Testimonial Modal */
-        #testimonialModal .overflow-y-auto {
-            scrollbar-width: thin;
-            scrollbar-color: #d4af37 #292524;
-        }
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body class="bg-white font-sans text-stone-900 overflow-x-hidden antialiased">
 
-        /* Chrome / Edge / Safari */
-        #testimonialModal .overflow-y-auto::-webkit-scrollbar {
-            width: 6px;
-        }
+        <!-- Navigation -->
+        <nav id="navbar" class="fixed w-full z-50 transition-all duration-700 bg-transparent py-8">
+            <div class="max-w-[90%] mx-auto flex justify-between items-center">
 
-        #testimonialModal .overflow-y-auto::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.04);
-            border-radius: 999px;
-            backdrop-filter: blur(10px);
-        }
-
-        #testimonialModal .overflow-y-auto::-webkit-scrollbar-thumb {
-            background: linear-gradient(
-                to bottom,
-                #d4af37,
-                #b68b2d
-            );
-            border-radius: 999px;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-        }
-
-        #testimonialModal .overflow-y-auto::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(
-                to bottom,
-                #e6c65a,
-                #c89b34
-            );
-        }
-
-        #testimonialModal .overflow-y-auto::-webkit-scrollbar-corner {
-            background: transparent;
-        }
-        @keyframes modalReveal {
-            from {
-                opacity: 0;
-                transform: scale(0.96) translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        .modal-animate {
-            animation: modalReveal 500ms cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .menu-item {
-            opacity: 0;
-            transform: translateY(20px);
-            filter: blur(6px);
-            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .menu-item.show {
-            opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
-        }
-        .menu-item {
-            display: inline-block;
-            will-change: transform;
-        }
-        #testimonialModal .overflow-y-auto {
-            scroll-behavior: smooth;
-        }
-        
-        #testimonialModalText {
-            transition: opacity 0.6s ease;
-            white-space: pre-line;
-        }
-    </style>
-</head>
-<body class="bg-white font-sans text-stone-900 overflow-x-hidden antialiased">
-
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-700 bg-transparent py-8">
-        <div class="max-w-[90%] mx-auto flex justify-between items-center">
-            
-            <!-- Menu Toggle Button -->
-            <button onclick="toggleMenu()" class="group flex items-center space-x-2 z-50 focus:outline-none cursor-pointer">
-                <!-- Menu Icon -->
-                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <!-- Menu Toggle Button -->
+                <button  id="menuToggleBtn" class="group flex items-center space-x-2 z-50 focus:outline-none cursor-pointer">
+                    <!-- Menu Icon -->
+                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
-                </svg>
-                <!-- Close Icon (Hidden by default) -->
-                <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    </svg>
+                    <!-- Close Icon (Hidden by default) -->
+                    <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-                <span id="menu-text" class="text-xs tracking-[0.2em] uppercase hidden md:block text-white">
-                    Menu
-                </span>
-            </button>
-
-<!-- CENTER LOGO + BRAND -->
-<a href="#home"
-   class="absolute left-1/2 transform -translate-x-1/2 z-50 cursor-pointer flex items-center gap-3 transition-transform transition-opacity duration-500">
-
-    <!-- Brand Icon -->
-    <img
-        id="logo-img"
-        src="images/main/Majestic_Dawn_Events_Logo_1.png"
-        alt="Majestic Dawn Events Logo"
-        class="transition-all duration-500 object-contain w-12 md:w-16 opacity-95 drop-shadow-xl"
-    />
-
-    <!-- Brand Text -->
-    <div class="flex flex-col leading-none">
-        <span class="text-white font-serif text-xl md:text-4xl tracking-[0.18em] uppercase drop-shadow-lg">
-            Majestic Dawn
-        </span>
-    </div>
-</a>
-
-            <!-- Inquire Link -->
-            <a href="#inquire" class="text-xs tracking-[0.2em] uppercase z-50 hidden md:block transition-colors duration-500 text-white hover:text-stone-300">
-                Inquire
-            </a>
-        </div>
-    </nav>
-
-    <!-- Full Screen Menu Overlay -->
-    <div id="mobileMenu" class="fixed inset-0 bg-black z-40 transition-transform duration-700 ease-in-out flex flex-col justify-center items-center -translate-y-full">
-        <div class="flex flex-col space-y-8 text-center">
-            <a href="#philosophy" onclick="toggleMenu()" class="menu-item text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">Philosophy</a>
-            <a href="#portfolio" onclick="toggleMenu()" class="menu-item text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">Portfolio</a>
-            <a href="#services" onclick="toggleMenu()" class="menu-item text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">Services</a>
-            <a href="#testimonials" onclick="toggleMenu()" class="menu-item text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">Testimonials</a>
-            <a href="#inquire" onclick="toggleMenu()" class="menu-item text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">Inquire</a>
-        </div>
-    </div>
-
-    <!-- Hero Section -->
-    <section id="home" class="relative h-screen flex items-center justify-center bg-black">
-        <div class="absolute inset-0 w-full h-full overflow-hidden">
-            <!-- 4K Hero Placeholder -->
-            <img 
-                src="images/main/main.jpg" 
-                alt="Majestic Dawn Event"
-                class="w-full h-full object-cover animate-ken-burns opacity-70"
-            />
-            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/30"></div>
-        </div>
-    </section>
-
-    <!-- Philosophy Section -->
-    <section id="philosophy" class="py-32 md:py-48 bg-white">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-8">Our Philosophy</p>
-            <h2 class="text-3xl md:text-5xl lg:text-6xl font-serif font-light leading-tight text-stone-900">
-                We believe in the quiet luxury of <span class="italic">perfectly</span> orchestrated moments.
-            </h2>
-            <p class="mt-12 text-stone-500 max-w-2xl mx-auto text-lg leading-relaxed font-light">
-                Majestic Dawn Events is a premier event design and production firm. We curate bespoke experiences defined by effortless elegance, tailored design, and impeccable hospitality.
-            </p>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-24 bg-stone-50">
-        <div class="max-w-[90%] mx-auto">
-            <div class="flex justify-between items-end mb-16">
-                <h2 class="text-sm tracking-[0.3em] uppercase text-stone-900">Accomplishments</h2>
-                <a href="#inquire" class="text-xs tracking-[0.2em] uppercase text-stone-500 hover:text-stone-900 border-b border-stone-300 pb-1 transition-all">Start Your Story</a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
-                <!-- Portfolio Item 1 -->
-                <div class="group cursor-pointer">
-<div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200 relative">
-    <!-- Slides -->
-    <img src="images/engagement/M_and_A_Engagement_1.jpg"
-         class="carousel-slide engagement-slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700 group-hover:scale-105"
-         alt="Engagement 1" />
-</div>
-                    <div class="text-center">
-                        <h3 class="text-2xl font-serif font-light text-stone-900 mb-2">Engagement</h3>
-                        <p class="text-xs tracking-[0.2em] uppercase text-stone-500">Elmhurst, IL</p>
-                    </div>
-                </div>
-                <!-- Portfolio Item 2 -->
-                <div class="group cursor-pointer md:mt-32">
-<div class="overflow-hidden mb-6 aspect-[7/5] bg-stone-200 relative">
-    <img src="images/pre-wedding/R_Pre-Wedding_1.jpg"
-         class="carousel-slide prewedding-slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700 group-hover:scale-105"
-         alt="Pre Wedding 1" />
-
-    <img src="images/pre-wedding/R_Pre-Wedding_2.png"
-         class="carousel-slide prewedding-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
-         alt="Pre Wedding 2" />
-</div>
-                    <div class="text-center">
-                        <h3 class="text-2xl font-serif font-light text-stone-900 mb-2">Pre-Wedding</h3>
-                        <p class="text-xs tracking-[0.2em] uppercase text-stone-500">Burr Ridge, IL</p>
-                    </div>
-                </div>
-                <!-- Portfolio Item 3 -->
-                <div class="group cursor-pointer md:mt-32">
-<div class="overflow-hidden mb-6 aspect-[7/5] bg-stone-200 relative">
-    <img src="images/housewarming/A_and_S_Housewarming_Party_1.jpg"
-         class="carousel-slide house-slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700 group-hover:scale-105"
-         alt="Housewarming 1" />
-
-    <img src="images/housewarming/A_and_S_Housewarming_Party_2.jpg"
-         class="carousel-slide house-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
-         alt="Housewarming 2" />
-
-    <img src="images/housewarming/A_and_S_Housewarming_Party_3.jpg"
-         class="carousel-slide house-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
-         alt="Housewarming 3" />
-
-    <img src="images/housewarming/A_and_S_Housewarming_Party_4.jpg"
-         class="carousel-slide house-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
-         alt="Housewarming 4" />
-
-    <img src="images/housewarming/A_and_S_Housewarming_Party_5.jpg"
-         class="carousel-slide house-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
-         alt="Housewarming 5" />
-
-    <img src="images/housewarming/A_and_S_Housewarming_Party_6.jpg"
-         class="carousel-slide house-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
-         alt="Housewarming 6" />
-</div>
-                    <div class="text-center">
-                        <h3 class="text-2xl font-serif font-light text-stone-900 mb-2">New Beginning</h3>
-                        <p class="text-xs tracking-[0.2em] uppercase text-stone-500">Naperville, IL</p>
-                    </div>
-                </div>
-                <!-- Portfolio Item 4 -->
-                <div class="group cursor-pointer">
-<div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200 relative">
-    <img src="images/sweet_16_bday/M_Sweet16_1.jpg"
-         class="carousel-slide rite-slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700 group-hover:scale-105"
-         alt="Sweet 16 1" />
-
-    <img src="images/sweet_16_bday/M_Sweet16_2.jpg"
-         class="carousel-slide rite-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
-         alt="Sweet 16 2" />
-
-    <img src="images/sweet_16_bday/M_Sweet16_3.jpg"
-         class="carousel-slide rite-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
-         alt="Sweet 16 3" />
-
-    <img src="images/sweet_16_bday/M_Sweet16_4.jpg"
-         class="carousel-slide rite-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
-         alt="Sweet 16 4" />
-</div>
-                    <div class="text-center">
-                        <h3 class="text-2xl font-serif font-light text-stone-900 mb-2">Rite of Passage</h3>
-                        <p class="text-xs tracking-[0.2em] uppercase text-stone-500">Glenview, IL</p>
-                    </div>
-                </div>
-                <!-- Portfolio Item 5 -->
-                <div class="group cursor-pointer md:mt-32">
-<div class="overflow-hidden mb-6 aspect-[7/5] bg-stone-200 relative">
-    <img src="images/golden_50th_bday/M_50th_Bday_1.jpg"
-         class="carousel-slide birthday-slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700 group-hover:scale-105"
-         alt="Birthday 1" />
-
-    <img src="images/golden_50th_bday/M_50th_Bday_2.jpg"
-         class="carousel-slide birthday-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
-         alt="Birthday 2" />
-
-    <img src="images/golden_50th_bday/M_50th_Bday_3.jpg"
-         class="carousel-slide birthday-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
-         alt="Birthday 3" />
-
-</div>
-                    <div class="text-center">
-                        <h3 class="text-2xl font-serif font-light text-stone-900 mb-2">The Golden Birthday</h3>
-                        <p class="text-xs tracking-[0.2em] uppercase text-stone-500">Lake in the Hills, IL</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-32 bg-white">
-        <div class="max-w-[80%] mx-auto flex flex-col md:flex-row gap-16 md:gap-32">
-            <div class="md:w-1/3">
-                <h2 class="text-sm tracking-[0.3em] uppercase text-stone-900 sticky top-32">Expertise</h2>
-            </div>
-            <div class="md:w-2/3 space-y-16">
-                <div class="border-b border-stone-200 pb-16">
-                    <h3 class="text-3xl font-serif font-light mb-6">Full-Service Production</h3>
-                    <p class="text-stone-500 leading-relaxed font-light">
-                        From the initial conceptualization to the final departure, we handle every logistical and design element. This comprehensive service ensures a cohesive aesthetic and a flawless, stress-free experience.
-                    </p>
-                </div>
-                <div class="border-b border-stone-200 pb-16">
-                    <h3 class="text-3xl font-serif font-light mb-6">Event Design & Styling</h3>
-                    <p class="text-stone-500 leading-relaxed font-light">
-                        Focusing purely on the visual impact, we curate the spatial layout, floral installations, lighting design, and custom fabrications to transform spaces into immersive environments.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-3xl font-serif font-light mb-6">Destination Celebrations</h3>
-                    <p class="text-stone-500 leading-relaxed font-light">
-                        Specializing in multi-day events across the globe, we manage travel logistics, venue sourcing, and curate localized experiences for your guests.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-32 bg-stone-900 text-white relative overflow-hidden">
-        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-            <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-16">Kind Words</p>
-            
-            <div class="relative min-h-[250px] flex items-center justify-center">
-                
-                <!-- Testimonial 1 -->
-                <div id="testimonial-0" class="testimonial-slide absolute transition-all duration-1000 ease-in-out opacity-100 translate-y-0 z-10">
-<div class="max-w-4xl mx-auto">
-    <h3 class="testimonial-preview text-2xl md:text-4xl lg:text-5xl font-serif font-light leading-relaxed mb-10 italic cursor-pointer hover:text-stone-300 transition-colors"
-        data-full='We can&apos;t recommend Majestic Dawn Event Planning Services enough to families looking for a planner who will go the extra mile.'>
-    </h3>
-
-    <button onclick="openTestimonial(this)"
-        class="testimonial-readmore text-xs uppercase tracking-[0.25em] text-[#d4af37] hover:text-white transition-colors"
-        data-full='From our first conversation with Majestic Dawn Event Planning Services, we knew we had found the right team for our house-warming services.\n\nTheir communication was so open and thorough that we never had to worry about what was happening next or if details were being missed. They went above and beyond what we had asked for, putting real effort in making us comfortable throughout the entire planning process.\n\nThe quality of their work was truly amazing. They handled everything with such care and attention that our day felt seamless and special.\n\nWe got rave review from our guests about how well everything was organized and executed.\n\nWe can&apos;t recommend Majestic Dawn Event Planning Services enough to families looking for a planner who will go the extra mile.'>
-        Read More
-    </button>
-</div>
-                    <div class="flex flex-col items-center">
-                        <span class="text-sm tracking-[0.2em] uppercase font-medium text-[#d4af37] mb-1">Ashisha</span>
-                        <span class="text-xs tracking-[0.1em] text-stone-400">Housewarming Event</span>
-                    </div>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div id="testimonial-1" class="testimonial-slide absolute transition-all duration-1000 ease-in-out opacity-0 translate-y-8 -z-10 pointer-events-none">
-<div class="max-w-4xl mx-auto">
-    <h3 class="testimonial-preview text-2xl md:text-4xl lg:text-5xl font-serif font-light leading-relaxed mb-10 italic cursor-pointer hover:text-stone-300 transition-colors"
-        data-full='The quiet luxury and impeccable taste they bring to the table is unmatched. Our pre-wedding event was elevated to an editorial masterpiece.'>
-    </h3>
-
-    <button onclick="openTestimonial(this)"
-        class="testimonial-readmore text-xs uppercase tracking-[0.25em] text-[#d4af37] hover:text-white transition-colors"
-        data-full='The quiet luxury and impeccable taste they bring to the table is unmatched. Our pre-wedding event was elevated to an editorial masterpiece.'>
-        Read More
-    </button>
-</div>
-                    <div class="flex flex-col items-center">
-                        <span class="text-sm tracking-[0.2em] uppercase font-medium text-[#d4af37] mb-1">RP</span>
-                        <span class="text-xs tracking-[0.1em] text-stone-400">Pre-Wedding Event</span>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div id="testimonial-2" class="testimonial-slide absolute transition-all duration-1000 ease-in-out opacity-0 translate-y-8 -z-10 pointer-events-none">
-<div class="max-w-4xl mx-auto">
-    <h3 class="testimonial-preview text-2xl md:text-4xl lg:text-5xl font-serif font-light leading-relaxed mb-10 italic cursor-pointer hover:text-stone-300 transition-colors"
-        data-full='From the spectacular floral installations to the seamless timeline, everything was absolutely perfect. I was able to be a guest at my own party.'>
-    </h3>
-
-    <button onclick="openTestimonial(this)"
-        class="testimonial-readmore text-xs uppercase tracking-[0.25em] text-[#d4af37] hover:text-white transition-colors"
-        data-full='From the spectacular floral installations to the seamless timeline, everything was absolutely perfect. I was able to be a guest at my own party.'>
-        Read More
-    </button>
-</div>
-                    <div class="flex flex-col items-center">
-                        <span class="text-sm tracking-[0.2em] uppercase font-medium text-[#d4af37] mb-1">The Zala</span>
-                        <span class="text-xs tracking-[0.1em] text-stone-400">Golden Birthday Celebration</span>
-                    </div>
-                </div>
-
-                <!-- Testimonial 4 -->
-                <div id="testimonial-3" class="testimonial-slide absolute transition-all duration-1000 ease-in-out opacity-0 translate-y-8 -z-10 pointer-events-none">
-
-<div class="max-w-4xl mx-auto">
-    <h3 class="testimonial-preview text-2xl md:text-4xl lg:text-5xl font-serif font-light leading-relaxed mb-10 italic cursor-pointer hover:text-stone-300 transition-colors"
-        data-full="Thank you, MD Event Planner team, for everything you did to make our daughter's birthday unforgettable!!! We are eternally grateful and  Looking forward to working with you in future">
-    </h3>
-
-    <button onclick="openTestimonial(this)"
-        class="testimonial-readmore text-xs uppercase tracking-[0.25em] text-[#d4af37] hover:text-white transition-colors"
-        data-full="When we started planning for my daughter's sixteen birthday, we did not have the slightest idea about what and how to go about planning for it. Coincidentally, and very thankfully, we came across Majestic Dawn Event Planner.\n\nFrom the first meeting onwards we got the feeling as if we were planning the event with our friends. They took the time to listen to our ideas, questions and concerns and came back with their evaluation and plan. They even provides justification where they thought why our idea might not work out.\n\nThe attention to details, their thoughtfulness and caring for the event planning as if it were their own and seeing it through the execution is the reason we are extremely satisfied with MD Events and would definitely recommend them. We also liked the vendors they recommended, who were pretty reasonable, professional and courteous.\n\nThe best part about the experience was on the day of the event where we didn't really have to worry about logistics or management as MD Events team took care of management with vendors, setup, tear down and everything in-between.\n\nThank you, MD Event Planner team, for everything you did to make our daughter's birthday unforgettable!!! We are eternally grateful!! Looking forward to working with you in future and we'd definitely recommend them.">
-        Read More
-    </button>
-</div>
-                    <div class="flex flex-col items-center">
-                        <span class="text-sm tracking-[0.2em] uppercase font-medium text-[#d4af37] mb-1">MJz</span>
-                        <span class="text-xs tracking-[0.1em] text-stone-400">Birthday Celebration</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testimonial Controls -->
-            <div class="flex justify-center items-center space-x-8 mt-16">
-                <button onclick="prevTestimonial()" class="text-stone-500 hover:text-white transition-colors cursor-pointer focus:outline-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                     </svg>
+                    <span id="menu-text" class="text-xs tracking-[0.2em] uppercase hidden md:block text-white">
+                        Menu
+                    </span>
                 </button>
-                <div class="flex space-x-3">
-                    <button id="dot-0" onclick="setTestimonial(0)" class="w-6 h-2 rounded-full transition-all duration-500 bg-[#d4af37] cursor-pointer focus:outline-none"></button>
-                    <button id="dot-1" onclick="setTestimonial(1)" class="w-2 h-2 rounded-full transition-all duration-500 bg-stone-600 cursor-pointer focus:outline-none"></button>
-                    <button id="dot-2" onclick="setTestimonial(2)" class="w-2 h-2 rounded-full transition-all duration-500 bg-stone-600 cursor-pointer focus:outline-none"></button>
-                    <button id="dot-3" onclick="setTestimonial(3)" class="w-2 h-2 rounded-full transition-all duration-500 bg-stone-600 cursor-pointer focus:outline-none"></button>
-                </div>
-                <button onclick="nextTestimonial()" class="text-stone-500 hover:text-white transition-colors cursor-pointer focus:outline-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
+
+                <!-- CENTER LOGO + BRAND -->
+                <a href="#home"
+                   class="absolute left-1/2 transform -translate-x-1/2 z-50 cursor-pointer flex items-center gap-3 transition-transform transition-opacity duration-500">
+
+                    <!-- Brand Icon -->
+                    <img
+                        id="logo-img"
+                        src="images/main/Majestic_Dawn_Events_Logo_1.png"
+                        alt="Majestic Dawn Events Logo"
+                        class="transition-all duration-500 object-contain w-12 md:w-16 opacity-95 drop-shadow-xl"
+                        />
+
+                    <!-- Brand Text -->
+                    <div class="flex flex-col leading-none">
+                        <span class="text-white font-serif text-xl md:text-4xl tracking-[0.18em] uppercase drop-shadow-lg">
+                            Majestic Dawn
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Inquire Link -->
+                <a href="#inquire" class="text-xs tracking-[0.2em] uppercase z-50 hidden md:block transition-colors duration-500 text-white hover:text-stone-300">
+                    Inquire
+                </a>
+            </div>
+        </nav>
+
+        <!-- Full Screen Menu Overlay -->
+        <div id="mobileMenu" class="fixed inset-0 bg-black z-40 transition-transform duration-700 ease-in-out flex flex-col justify-center items-center -translate-y-full">
+            <div class="flex flex-col space-y-8 text-center">
+                <a href="#philosophy" class="menu-item mobile-menu-link text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">
+                    Philosophy
+                </a>
+
+                <a href="#portfolio" class="menu-item mobile-menu-link text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">
+                    Portfolio
+                </a>
+
+                <a href="#services" class="menu-item mobile-menu-link text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">
+                    Services
+                </a>
+
+                <a href="#testimonials" class="menu-item mobile-menu-link text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">
+                    Testimonials
+                </a>
+
+                <a href="#inquire" class="menu-item mobile-menu-link text-4xl md:text-6xl font-serif text-white hover:text-stone-400 transition-colors duration-300 font-light">
+                    Inquire
+                </a>
             </div>
         </div>
-    </section>
 
-    <!-- Elegant Contact / Inquire Form -->
-    <section id="inquire" class="py-32 bg-stone-50">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-6xl font-serif font-light mb-6 text-stone-900">Begin the Conversation</h2>
-                <p class="text-stone-500 font-light text-lg max-w-2xl mx-auto">
-                    We accept a limited number of commissions annually to ensure the utmost attention to detail. Please share your vision with us below.
+        <!-- Hero Section -->
+        <section id="home" class="relative h-screen flex items-center justify-center bg-black">
+            <div class="absolute inset-0 w-full h-full overflow-hidden">
+                <!-- 4K Hero Placeholder -->
+                <img 
+                    src="images/main/main.jpg" 
+                    alt="Majestic Dawn Event"
+                    class="w-full h-full object-cover animate-ken-burns opacity-70"
+                    />
+                <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/30"></div>
+            </div>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section id="philosophy" class="scroll-mt-32 py-32 md:py-48 bg-white">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-8">Our Philosophy</p>
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-serif font-light leading-tight text-stone-900">
+                    We believe in the quiet luxury of <span class="italic">perfectly</span> orchestrated moments.
+                </h2>
+                <p class="mt-12 text-stone-500 max-w-2xl mx-auto text-lg leading-relaxed font-light">
+                    Majestic Dawn Events is a premier event design and production firm. We curate bespoke experiences defined by effortless elegance, tailored design, and impeccable hospitality.
                 </p>
             </div>
+        </section>
 
-            <!-- Web3Forms Form Integration -->
-            <!-- Step 1: Go to web3forms.com and create a free access key for info@MajesticDawnEvents.com -->
-            <!-- Step 2: Replace "YOUR_ACCESS_KEY_HERE" with the actual key -->
-            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-12 bg-white p-8 md:p-16 shadow-sm border border-stone-100">
-                
-                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
-                <input type="hidden" name="subject" value="New Inquiry from Majestic Dawn Events Website" />
-                <input type="hidden" name="from_name" value="Majestic Dawn Website" />
-                <!-- Redirect to homepage after submission -->
-                <input type="hidden" name="redirect" value="https://majesticdawnevents.com/">
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="scroll-mt-32 py-24 bg-stone-50">
+            <div class="max-w-[90%] mx-auto">
+                <div class="flex justify-between items-end mb-16">
+                    <h2 class="text-sm tracking-[0.3em] uppercase text-stone-900">Accomplishments</h2>
+                    <a href="#inquire" class="text-xs tracking-[0.2em] uppercase text-stone-500 hover:text-stone-900 border-b border-stone-300 pb-1 transition-all">Start Your Story</a>
+                </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div class="relative">
-                        <input type="text" name="First Name" required class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition-colors peer placeholder-transparent" placeholder="First Name" />
-                        <label class="absolute left-0 -top-4 text-xs tracking-[0.2em] uppercase text-stone-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-stone-900 cursor-text">First Name *</label>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
+                    <!-- Portfolio Item 1 -->
+                    <div class="group cursor-pointer">
+                        <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200 relative">
+                            <!-- Slides -->
+                            <img src="images/engagement/M_and_A_Engagement_1.jpg"
+                                 class="carousel-slide engagement-slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700 group-hover:scale-105"
+                                 alt="Engagement 1" />
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-2xl font-serif font-light text-stone-900 mb-2">Engagement</h3>
+                            <p class="text-xs tracking-[0.2em] uppercase text-stone-500">Elmhurst, IL</p>
+                        </div>
                     </div>
-                    <div class="relative">
-                        <input type="text" name="Last Name" required class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition-colors peer placeholder-transparent" placeholder="Last Name" />
-                        <label class="absolute left-0 -top-4 text-xs tracking-[0.2em] uppercase text-stone-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-stone-900 cursor-text">Last Name *</label>
+                    <!-- Portfolio Item 2 -->
+                    <div class="group cursor-pointer md:mt-32">
+                        <div class="overflow-hidden mb-6 aspect-[7/5] bg-stone-200 relative">
+                            <img src="images/pre-wedding/R_Pre-Wedding_1.jpg"
+                                 class="carousel-slide prewedding-slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700 group-hover:scale-105"
+                                 alt="Pre Wedding 1" />
+
+                            <img src="images/pre-wedding/R_Pre-Wedding_2.png"
+                                 class="carousel-slide prewedding-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
+                                 alt="Pre Wedding 2" />
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-2xl font-serif font-light text-stone-900 mb-2">Pre-Wedding</h3>
+                            <p class="text-xs tracking-[0.2em] uppercase text-stone-500">Burr Ridge, IL</p>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 3 -->
+                    <div class="group cursor-pointer md:mt-32">
+                        <div class="overflow-hidden mb-6 aspect-[7/5] bg-stone-200 relative">
+                            <img src="images/housewarming/A_and_S_Housewarming_Party_1.jpg"
+                                 class="carousel-slide house-slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700 group-hover:scale-105"
+                                 alt="Housewarming 1" />
+
+                            <img src="images/housewarming/A_and_S_Housewarming_Party_2.jpg"
+                                 class="carousel-slide house-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
+                                 alt="Housewarming 2" />
+
+                            <img src="images/housewarming/A_and_S_Housewarming_Party_3.jpg"
+                                 class="carousel-slide house-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
+                                 alt="Housewarming 3" />
+
+                            <img src="images/housewarming/A_and_S_Housewarming_Party_4.jpg"
+                                 class="carousel-slide house-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
+                                 alt="Housewarming 4" />
+
+                            <img src="images/housewarming/A_and_S_Housewarming_Party_5.jpg"
+                                 class="carousel-slide house-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
+                                 alt="Housewarming 5" />
+
+                            <img src="images/housewarming/A_and_S_Housewarming_Party_6.jpg"
+                                 class="carousel-slide house-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
+                                 alt="Housewarming 6" />
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-2xl font-serif font-light text-stone-900 mb-2">New Beginning</h3>
+                            <p class="text-xs tracking-[0.2em] uppercase text-stone-500">Naperville, IL</p>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 4 -->
+                    <div class="group cursor-pointer">
+                        <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200 relative">
+                            <img src="images/sweet_16_bday/M_Sweet16_1.jpg"
+                                 class="carousel-slide rite-slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700 group-hover:scale-105"
+                                 alt="Sweet 16 1" />
+
+                            <img src="images/sweet_16_bday/M_Sweet16_2.jpg"
+                                 class="carousel-slide rite-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
+                                 alt="Sweet 16 2" />
+
+                            <img src="images/sweet_16_bday/M_Sweet16_3.jpg"
+                                 class="carousel-slide rite-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
+                                 alt="Sweet 16 3" />
+
+                            <img src="images/sweet_16_bday/M_Sweet16_4.jpg"
+                                 class="carousel-slide rite-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
+                                 alt="Sweet 16 4" />
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-2xl font-serif font-light text-stone-900 mb-2">Rite of Passage</h3>
+                            <p class="text-xs tracking-[0.2em] uppercase text-stone-500">Glenview, IL</p>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 5 -->
+                    <div class="group cursor-pointer md:mt-32">
+                        <div class="overflow-hidden mb-6 aspect-[7/5] bg-stone-200 relative">
+                            <img src="images/golden_50th_bday/M_50th_Bday_1.jpg"
+                                 class="carousel-slide birthday-slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700 group-hover:scale-105"
+                                 alt="Birthday 1" />
+
+                            <img src="images/golden_50th_bday/M_50th_Bday_2.jpg"
+                                 class="carousel-slide birthday-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
+                                 alt="Birthday 2" />
+
+                            <img src="images/golden_50th_bday/M_50th_Bday_3.jpg"
+                                 class="carousel-slide birthday-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105"
+                                 alt="Birthday 3" />
+
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-2xl font-serif font-light text-stone-900 mb-2">The Golden Birthday</h3>
+                            <p class="text-xs tracking-[0.2em] uppercase text-stone-500">Lake in the Hills, IL</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="scroll-mt-32 py-32 bg-white">
+            <div class="max-w-[80%] mx-auto flex flex-col md:flex-row gap-16 md:gap-32">
+                <div class="md:w-1/3">
+                    <h2 class="text-sm tracking-[0.3em] uppercase text-stone-900 sticky top-32">Expertise</h2>
+                </div>
+                <div class="md:w-2/3 space-y-16">
+                    <div class="border-b border-stone-200 pb-16">
+                        <h3 class="text-3xl font-serif font-light mb-6">Full-Service Production</h3>
+                        <p class="text-stone-500 leading-relaxed font-light">
+                            From the initial conceptualization to the final departure, we handle every logistical and design element. This comprehensive service ensures a cohesive aesthetic and a flawless, stress-free experience.
+                        </p>
+                    </div>
+                    <div class="border-b border-stone-200 pb-16">
+                        <h3 class="text-3xl font-serif font-light mb-6">Event Design & Styling</h3>
+                        <p class="text-stone-500 leading-relaxed font-light">
+                            Focusing purely on the visual impact, we curate the spatial layout, floral installations, lighting design, and custom fabrications to transform spaces into immersive environments.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-serif font-light mb-6">Destination Celebrations</h3>
+                        <p class="text-stone-500 leading-relaxed font-light">
+                            Specializing in multi-day events across the globe, we manage travel logistics, venue sourcing, and curate localized experiences for your guests.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="scroll-mt-32 py-32 bg-stone-900 text-white relative overflow-hidden">
+            <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+                <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-16">Kind Words</p>
+
+                <div class="relative min-h-[250px] flex items-center justify-center">
+
+                    <!-- Testimonial 1 -->
+                    <div id="testimonial-0" class="testimonial-slide absolute transition-all duration-1000 ease-in-out opacity-100 translate-y-0 z-10">
+                        <div class="max-w-4xl mx-auto">
+                            <h3 class="testimonial-preview text-2xl md:text-4xl lg:text-5xl font-serif font-light leading-relaxed mb-10 italic cursor-pointer hover:text-stone-300 transition-colors"
+                                data-full='We can&apos;t recommend Majestic Dawn Event Planning Services enough to families looking for a planner who will go the extra mile.'>
+                            </h3>
+
+                            <button class="open-testimonial-btn
+                                    testimonial-readmore text-xs uppercase tracking-[0.25em] text-[#d4af37] hover:text-white transition-colors"
+                                    data-full='From our first conversation with Majestic Dawn Event Planning Services, we knew we had found the right team for our house-warming services.\n\nTheir communication was so open and thorough that we never had to worry about what was happening next or if details were being missed. They went above and beyond what we had asked for, putting real effort in making us comfortable throughout the entire planning process.\n\nThe quality of their work was truly amazing. They handled everything with such care and attention that our day felt seamless and special.\n\nWe got rave review from our guests about how well everything was organized and executed.\n\nWe can&apos;t recommend Majestic Dawn Event Planning Services enough to families looking for a planner who will go the extra mile.'>
+                                Read More
+                            </button>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <span class="text-sm tracking-[0.2em] uppercase font-medium text-[#d4af37] mb-1">Ashisha</span>
+                            <span class="text-xs tracking-[0.1em] text-stone-400">Housewarming Event</span>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div id="testimonial-1" class="testimonial-slide absolute transition-all duration-1000 ease-in-out opacity-0 translate-y-8 -z-10 pointer-events-none">
+                        <div class="max-w-4xl mx-auto">
+                            <h3 class="testimonial-preview text-2xl md:text-4xl lg:text-5xl font-serif font-light leading-relaxed mb-10 italic cursor-pointer hover:text-stone-300 transition-colors"
+                                data-full='The quiet luxury and impeccable taste they bring to the table is unmatched. Our pre-wedding event was elevated to an editorial masterpiece.'>
+                            </h3>
+
+                            <button class="open-testimonial-btn
+                                    testimonial-readmore text-xs uppercase tracking-[0.25em] text-[#d4af37] hover:text-white transition-colors"
+                                    data-full='The quiet luxury and impeccable taste they bring to the table is unmatched. Our pre-wedding event was elevated to an editorial masterpiece.'>
+                                Read More
+                            </button>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <span class="text-sm tracking-[0.2em] uppercase font-medium text-[#d4af37] mb-1">RP</span>
+                            <span class="text-xs tracking-[0.1em] text-stone-400">Pre-Wedding Event</span>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div id="testimonial-2" class="testimonial-slide absolute transition-all duration-1000 ease-in-out opacity-0 translate-y-8 -z-10 pointer-events-none">
+                        <div class="max-w-4xl mx-auto">
+                            <h3 class="testimonial-preview text-2xl md:text-4xl lg:text-5xl font-serif font-light leading-relaxed mb-10 italic cursor-pointer hover:text-stone-300 transition-colors"
+                                data-full='From the spectacular floral installations to the seamless timeline, everything was absolutely perfect. I was able to be a guest at my own party.'>
+                            </h3>
+
+                            <button class="open-testimonial-btn
+                                    testimonial-readmore text-xs uppercase tracking-[0.25em] text-[#d4af37] hover:text-white transition-colors"
+                                    data-full='From the spectacular floral installations to the seamless timeline, everything was absolutely perfect. I was able to be a guest at my own party.'>
+                                Read More
+                            </button>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <span class="text-sm tracking-[0.2em] uppercase font-medium text-[#d4af37] mb-1">The Zala</span>
+                            <span class="text-xs tracking-[0.1em] text-stone-400">Golden Birthday Celebration</span>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div id="testimonial-3" class="testimonial-slide absolute transition-all duration-1000 ease-in-out opacity-0 translate-y-8 -z-10 pointer-events-none">
+
+                        <div class="max-w-4xl mx-auto">
+                            <h3 class="testimonial-preview text-2xl md:text-4xl lg:text-5xl font-serif font-light leading-relaxed mb-10 italic cursor-pointer hover:text-stone-300 transition-colors"
+                                data-full="Thank you, MD Event Planner team, for everything you did to make our daughter's birthday unforgettable!!! We are eternally grateful and  Looking forward to working with you in future">
+                            </h3>
+
+                            <button class="open-testimonial-btn
+                                    testimonial-readmore text-xs uppercase tracking-[0.25em] text-[#d4af37] hover:text-white transition-colors"
+                                    data-full="When we started planning for my daughter's sixteen birthday, we did not have the slightest idea about what and how to go about planning for it. Coincidentally, and very thankfully, we came across Majestic Dawn Event Planner.\n\nFrom the first meeting onwards we got the feeling as if we were planning the event with our friends. They took the time to listen to our ideas, questions and concerns and came back with their evaluation and plan. They even provides justification where they thought why our idea might not work out.\n\nThe attention to details, their thoughtfulness and caring for the event planning as if it were their own and seeing it through the execution is the reason we are extremely satisfied with MD Events and would definitely recommend them. We also liked the vendors they recommended, who were pretty reasonable, professional and courteous.\n\nThe best part about the experience was on the day of the event where we didn't really have to worry about logistics or management as MD Events team took care of management with vendors, setup, tear down and everything in-between.\n\nThank you, MD Event Planner team, for everything you did to make our daughter's birthday unforgettable!!! We are eternally grateful!! Looking forward to working with you in future and we'd definitely recommend them.">
+                                Read More
+                            </button>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <span class="text-sm tracking-[0.2em] uppercase font-medium text-[#d4af37] mb-1">MJz</span>
+                            <span class="text-xs tracking-[0.1em] text-stone-400">16th Birthday Celebration</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div class="relative">
-                        <input type="email" name="Email" required class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition-colors peer placeholder-transparent" placeholder="Email Address" />
-                        <label class="absolute left-0 -top-4 text-xs tracking-[0.2em] uppercase text-stone-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-stone-900 cursor-text">Email Address *</label>
+                <!-- Testimonial Controls -->
+                <div class="flex justify-center items-center space-x-8 mt-16">
+                    <button id="prevTestimonialBtn" class="text-stone-500 hover:text-white transition-colors cursor-pointer focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    <div class="flex space-x-3">
+                        <button id="dot-0" data-index="0" class="w-6 h-2 rounded-full transition-all duration-500 bg-[#d4af37] cursor-pointer focus:outline-none"></button>
+                        <button id="dot-1" data-index="1" class="w-2 h-2 rounded-full transition-all duration-500 bg-stone-600 cursor-pointer focus:outline-none"></button>
+                        <button id="dot-2" data-index="2" class="w-2 h-2 rounded-full transition-all duration-500 bg-stone-600 cursor-pointer focus:outline-none"></button>
+                        <button id="dot-3" data-index="3" class="w-2 h-2 rounded-full transition-all duration-500 bg-stone-600 cursor-pointer focus:outline-none"></button>
                     </div>
-                    <div class="relative">
-                        <input type="tel" name="Phone" class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition-colors peer placeholder-transparent" placeholder="Phone Number" />
-                        <label class="absolute left-0 -top-4 text-xs tracking-[0.2em] uppercase text-stone-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-stone-900 cursor-text">Phone Number</label>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div class="relative">
-                        <input type="date" name="Event Date" class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition-colors text-stone-900" />
-                        <label class="absolute left-0 -top-5 text-xs tracking-[0.2em] uppercase text-stone-400">Anticipated Date</label>
-                    </div>
-                    <div class="relative">
-                        <input type="text" name="Guest Count" class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition-colors peer placeholder-transparent" placeholder="Estimated Guest Count" />
-                        <label class="absolute left-0 -top-4 text-xs tracking-[0.2em] uppercase text-stone-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-stone-900 cursor-text">Estimated Guest Count</label>
-                    </div>
-                </div>
-
-                <div class="relative">
-                    <textarea name="Event Details" rows="4" required class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition-colors peer placeholder-transparent resize-none" placeholder="Tell us about your vision..."></textarea>
-                    <label class="absolute left-0 -top-4 text-xs tracking-[0.2em] uppercase text-stone-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-stone-900 cursor-text">Tell us about your vision... *</label>
-                </div>
-
-                <div class="text-center pt-8">
-                    <button type="submit" class="bg-stone-900 text-white px-16 py-5 text-xs tracking-[0.3em] uppercase hover:bg-stone-800 transition-colors duration-500 w-full md:w-auto cursor-pointer">
-                        Submit Inquiry
+                    <button id="nextTestimonialBtn" class="text-stone-500 hover:text-white transition-colors cursor-pointer focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
                     </button>
                 </div>
-            </form>
-        </div>
-    </section>
+            </div>
+        </section>
 
-    <!-- Minimal Footer -->
-    <footer class="bg-black text-white py-16 text-center">
-        <div class="max-w-3xl mx-auto px-6">
-            <div class="border-t border-stone-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs tracking-[0.2em] text-stone-500 uppercase">
-                <p>&copy; <span id="current-year"></span> Majestic Dawn</p>
-                <div class="flex space-x-8 mt-6 md:mt-0">
-                    <a href="#" class="hover:text-white transition-colors">Instagram</a>
-                    <a href="#" class="hover:text-white transition-colors">Pinterest</a>
+        <!-- Contact / Inquire Form -->
+        <section id="inquire" class="scroll-mt-32 py-32 bg-stone-50">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-6xl font-serif font-light mb-6 text-stone-900">Begin the Conversation</h2>
+                    <p class="text-stone-500 font-light text-lg max-w-2xl mx-auto">
+                        We accept a limited number of commissions annually to ensure the utmost attention to detail. Please share your vision with us below.
+                    </p>
+                </div>
+
+                <!-- Web3Forms Form Integration -->
+                <!-- Step 1: Go to web3forms.com and create a free access key for info@MajesticDawnEvents.com -->
+                <!-- Step 2: Replace "YOUR_ACCESS_KEY_HERE" with the actual key -->
+                <form action="https://api.web3forms.com/submit" method="POST" class="space-y-12 bg-white p-8 md:p-16 shadow-sm border border-stone-100">
+
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+                    <input type="hidden" name="subject" value="New Inquiry from Majestic Dawn Events Website" />
+                    <input type="hidden" name="from_name" value="Majestic Dawn Website" />
+                    <!-- Redirect to homepage after submission -->
+                    <input type="hidden" name="redirect" value="https://majesticdawnevents.com/">
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="relative">
+                            <input type="text" name="First Name" required class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition-colors peer placeholder-transparent" placeholder="First Name" />
+                            <label class="absolute left-0 -top-4 text-xs tracking-[0.2em] uppercase text-stone-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-stone-900 cursor-text">First Name *</label>
+                        </div>
+                        <div class="relative">
+                            <input type="text" name="Last Name" required class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition-colors peer placeholder-transparent" placeholder="Last Name" />
+                            <label class="absolute left-0 -top-4 text-xs tracking-[0.2em] uppercase text-stone-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-stone-900 cursor-text">Last Name *</label>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="relative">
+                            <input type="email" name="Email" required class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition-colors peer placeholder-transparent" placeholder="Email Address" />
+                            <label class="absolute left-0 -top-4 text-xs tracking-[0.2em] uppercase text-stone-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-stone-900 cursor-text">Email Address *</label>
+                        </div>
+                        <div class="relative">
+                            <input type="tel" name="Phone" class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition-colors peer placeholder-transparent" placeholder="Phone Number" />
+                            <label class="absolute left-0 -top-4 text-xs tracking-[0.2em] uppercase text-stone-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-stone-900 cursor-text">Phone Number</label>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="relative">
+                            <input type="date" name="Event Date" class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition-colors text-stone-900" />
+                            <label class="absolute left-0 -top-5 text-xs tracking-[0.2em] uppercase text-stone-400">Anticipated Date</label>
+                        </div>
+                        <div class="relative">
+                            <input type="text" name="Guest Count" class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition-colors peer placeholder-transparent" placeholder="Estimated Guest Count" />
+                            <label class="absolute left-0 -top-4 text-xs tracking-[0.2em] uppercase text-stone-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-stone-900 cursor-text">Estimated Guest Count</label>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <textarea name="Event Details" rows="4" required class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition-colors peer placeholder-transparent resize-none" placeholder="Tell us about your vision..."></textarea>
+                        <label class="absolute left-0 -top-4 text-xs tracking-[0.2em] uppercase text-stone-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-stone-900 cursor-text">Tell us about your vision... *</label>
+                    </div>
+
+                    <div class="text-center pt-8">
+                        <button type="submit" class="bg-stone-900 text-white px-16 py-5 text-xs tracking-[0.3em] uppercase hover:bg-stone-800 transition-colors duration-500 w-full md:w-auto cursor-pointer">
+                            Submit Inquiry
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Minimal Footer -->
+        <footer class="bg-black text-white py-16 text-center">
+            <div class="max-w-3xl mx-auto px-6">
+                <div class="border-t border-stone-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs tracking-[0.2em] text-stone-500 uppercase">
+                    <p>&copy; <span id="current-year"></span> Majestic Dawn</p>
+                    <div class="flex space-x-8 mt-6 md:mt-0">
+                        <a href="#" class="hover:text-white transition-colors">Instagram</a>
+                        <a href="#" class="hover:text-white transition-colors">Pinterest</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- TESTIMONIAL MODAL -->
+        <div id="testimonialModal"
+             class="fixed inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90 backdrop-blur-md z-[999] hidden items-center justify-center p-6">
+
+            <div class="bg-[#111111]/95 backdrop-blur-xl text-white max-w-2xl w-full p-10 md:p-14 relative shadow-[0_20px_80px_rgba(0,0,0,0.6)] border border-white/10 rounded-sm">
+                <!-- Close -->
+                <button id="closeModalBtn"
+                        class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center border border-white/10 rounded-full text-stone-400 hover:text-white hover:border-[#d4af37] hover:bg-white/5 transition-all duration-300">
+                    &times;
+                </button>
+
+                <!-- Content -->
+                <div class="overflow-y-auto max-h-[75vh] pr-4">
+                    <div class="text-[#d4af37] text-6xl font-serif leading-none -mb-2 opacity-80">
+                        “
+                    </div>
+                    <p id="testimonialModalText"
+                       class="text-lg md:text-2xl font-serif font-light leading-[2.2rem] md:leading-[3rem] text-stone-100 italic tracking-wide">
+                    </p>
+                    <div class="text-[#d4af37] text-6xl font-serif leading-none -mb-2 opacity-80">
+                        ”
+                    </div>
+                    <div class="mt-10 pt-6 border-t border-white/10">
+                        <p class="text-xs tracking-[0.35em] uppercase text-[#d4af37]">
+                            Majestic Dawn Client
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
 
-    <!-- Interactive Logic (Vanilla Javascript) -->
-    <script>
-        // Set current year
-        document.getElementById('current-year').innerHTML = new Date().getFullYear();
-
-        // Navbar Scroll Logic
-        const navbar = document.getElementById('navbar');
-        const logoImg = document.getElementById('logo-img');
-        let isMenuOpen = false;
-
-        window.addEventListener('scroll', () => {
-            const isScrolled = window.scrollY > 50;
-            
-            if (isScrolled || isMenuOpen) {
-                // Scrolled or Menu Open state
-                navbar.classList.add('bg-black', 'py-4', 'shadow-xl');
-                navbar.classList.remove('bg-transparent', 'py-8');
-                logoImg.classList.add('w-10', 'md:w-12');
-                logoImg.classList.remove('w-12', 'md:w-16');
-            } else {
-                // Top of page state
-                navbar.classList.add('bg-transparent', 'py-8');
-                navbar.classList.remove('bg-black', 'py-4', 'shadow-xl');
-                logoImg.classList.add('w-12', 'md:w-16');
-                logoImg.classList.remove('w-10', 'md:w-12');
-            }
-        });
-
-        // Mobile Menu Logic
-        function toggleMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const menuIcon = document.getElementById('menu-icon');
-            const closeIcon = document.getElementById('close-icon');
-            const menuText = document.getElementById('menu-text');
-            const logo = document.querySelector('nav a[href="#home"]');
-
-            isMenuOpen = !isMenuOpen;
-
-            if (isMenuOpen) {
-                mobileMenu.classList.remove('-translate-y-full');
-                mobileMenu.classList.add('translate-y-0');
-
-                menuIcon.classList.add('hidden');
-                closeIcon.classList.remove('hidden');
-                menuText.innerHTML = 'Close';
-
-                logo.classList.add('opacity-0', 'scale-90', 'pointer-events-none');
-                
-                // ✨ staggered reveal
-                const items = document.querySelectorAll('.menu-item');
-                items.forEach((item, i) => {
-                    setTimeout(() => {
-                        item.classList.add('show');
-                    }, 120 * i);
-                });
-
-            } else {
-                mobileMenu.classList.add('-translate-y-full');
-                mobileMenu.classList.remove('translate-y-0');
-
-                closeIcon.classList.add('hidden');
-                menuIcon.classList.remove('hidden');
-                menuText.innerHTML = 'Menu';
-
-                logo.classList.remove('opacity-0', 'scale-90', 'pointer-events-none');
-
-                // reset animation
-                document.querySelectorAll('.menu-item').forEach(item => {
-                    item.classList.remove('show');
-                });
-            }
-        }
-
-        // -----------------------------
-        // PORTFOLIO IMAGE CAROUSELS
-        // -----------------------------
-        function initCarousels() {
-            const carousels = document.querySelectorAll('.overflow-hidden.relative');
-
-            carousels.forEach((container) => {
-                const slides = container.querySelectorAll('.carousel-slide');
-                if (slides.length <= 1) return;
-
-                let index = 0;
-
-                setInterval(() => {
-                    // hide current
-                    slides[index].classList.remove('opacity-100');
-                    slides[index].classList.add('opacity-0');
-
-                    // next index
-                    index = (index + 1) % slides.length;
-
-                    // show next
-                    slides[index].classList.remove('opacity-0');
-                    slides[index].classList.add('opacity-100');
-                }, 2500);
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', initCarousels);
-let activeTestimonial = 0;
-const totalTestimonials = 4;
-
-/* -----------------------------
-   PREVIEW TEXT INIT (FIXED)
-------------------------------*/
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll('.testimonial-preview').forEach(el => {
-        const text = el.getAttribute('data-full');
-        if (!text) return;
-
-        const cleaned = text
-            .replace(/\\n/g, ' ')     // safe flatten for preview
-            .replace(/\s+/g, ' ')
-            .trim();
-
-        // First sentence only (safe fallback)
-        const firstSentence = cleaned.match(/[^.!?]+[.!?]+/)?.[0] || cleaned;
-
-        el.textContent = firstSentence.trim();
-    });
-});
-
-/* -----------------------------
-   SLIDER LOGIC (UNCHANGED BUT CLEAN)
-------------------------------*/
-function updateTestimonials() {
-    for (let i = 0; i < totalTestimonials; i++) {
-        const slide = document.getElementById(`testimonial-${i}`);
-        const dot = document.getElementById(`dot-${i}`);
-
-        if (i === activeTestimonial) {
-            slide.classList.remove('opacity-0', 'translate-y-8', '-z-10', 'pointer-events-none');
-            slide.classList.add('opacity-100', 'translate-y-0', 'z-10');
-
-            dot.classList.remove('bg-stone-600', 'w-2');
-            dot.classList.add('bg-[#d4af37]', 'w-6');
-        } else {
-            slide.classList.add('opacity-0', 'translate-y-8', '-z-10', 'pointer-events-none');
-            slide.classList.remove('opacity-100', 'translate-y-0', 'z-10');
-
-            dot.classList.add('bg-stone-600', 'w-2');
-            dot.classList.remove('bg-[#d4af37]', 'w-6');
-        }
-    }
-}
-
-function nextTestimonial() {
-    activeTestimonial = (activeTestimonial + 1) % totalTestimonials;
-    updateTestimonials();
-}
-
-function prevTestimonial() {
-    activeTestimonial = (activeTestimonial - 1 + totalTestimonials) % totalTestimonials;
-    updateTestimonials();
-}
-
-function setTestimonial(index) {
-    activeTestimonial = index;
-    updateTestimonials();
-}
-
-/* -----------------------------
-   MODAL (FIXED LINE BREAKS)
-------------------------------*/
-function openTestimonial(el) {
-    const modal = document.getElementById('testimonialModal');
-    const modalText = document.getElementById('testimonialModalText');
-    const modalContent = modal.querySelector('div');
-
-    modal.addEventListener('click', (e) => {
-        // Close only if clicking the dark overlay, not the modal box
-        if (!modalContent.contains(e.target)) {
-            closeTestimonial();
-        }
-    });
-    modalContent.addEventListener('click', (e) => {
-        e.stopPropagation();
-    });
-
-    let fullText = el.getAttribute('data-full') || '';
-
-    // normalize line breaks
-    fullText = fullText.replace(/\\n/g, '\n');
-
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    document.body.classList.add('overflow-hidden');
-
-    // ✨ NEW: simple fade-in text (no typewriter)
-    modalText.style.opacity = 0;
-    modalText.textContent = fullText;
-
-    requestAnimationFrame(() => {
-        modalText.style.transition = 'opacity 600ms ease';
-        modalText.style.opacity = 1;
-    });
-}
-
-/* -----------------------------
-   CLOSE MODAL
-------------------------------*/
-function closeTestimonial() {
-    const modal = document.getElementById('testimonialModal');
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-    document.body.classList.remove('overflow-hidden');
-}
-
-/* background click close */
-document.getElementById('testimonialModal')
-    .addEventListener('click', function (e) {
-        if (e.target === this) closeTestimonial();
-    });
-    
-    /* -----------------------------
-       MOBILE SWIPE SUPPORT
-    ------------------------------*/
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    const testimonialContainer = document.querySelector('#testimonials .relative.min-h-\\[250px\\]');
-
-    if (testimonialContainer) {
-
-        testimonialContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
-        testimonialContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
-
-    }
-
-    function handleTouchStart(e) {
-        touchStartX = e.changedTouches[0].screenX;
-    }
-
-    function handleTouchEnd(e) {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipeGesture();
-    }
-
-    function handleSwipeGesture() {
-        const swipeDistance = touchEndX - touchStartX;
-
-        // ignore small accidental swipes
-        if (Math.abs(swipeDistance) < 50) return;
-
-        if (swipeDistance < 0) {
-            // swipe left → next
-            nextTestimonial();
-        } else {
-            // swipe right → previous
-            prevTestimonial();
-        }
-    }
-    </script>
-<!-- TESTIMONIAL MODAL -->
-<div id="testimonialModal"
-     class="fixed inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90 backdrop-blur-md z-[999] hidden items-center justify-center p-6">
-
-<div class="bg-[#111111]/95 backdrop-blur-xl text-white max-w-2xl w-full p-10 md:p-14 relative shadow-[0_20px_80px_rgba(0,0,0,0.6)] border border-white/10 rounded-sm">
-        <!-- Close -->
-        <button onclick="closeTestimonial()"
-                class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center border border-white/10 rounded-full text-stone-400 hover:text-white hover:border-[#d4af37] hover:bg-white/5 transition-all duration-300">
-            &times;
-        </button>
-
-        <!-- Content -->
-        <div class="overflow-y-auto max-h-[75vh] pr-4">
-<div class="text-[#d4af37] text-6xl font-serif leading-none -mb-2 opacity-80">
-    “
-</div>
-            <p id="testimonialModalText"
-               class="text-lg md:text-2xl font-serif font-light leading-[2.2rem] md:leading-[3rem] text-stone-100 italic tracking-wide">
-            </p>
-<div class="text-[#d4af37] text-6xl font-serif leading-none -mb-2 opacity-80">
-    ”
-</div>
-            <div class="mt-10 pt-6 border-t border-white/10">
-                <p class="text-xs tracking-[0.35em] uppercase text-[#d4af37]">
-                    Majestic Dawn Client
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-</body>
+        <script src="js/script.js"></script>
+    </body>
 </html>
