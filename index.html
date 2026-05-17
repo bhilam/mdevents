@@ -633,6 +633,7 @@ form.addEventListener("submit", async function(e) {
             "https://script.google.com/macros/s/AKfycbxlMqLztP7LdugOQQPuAud8krNqT3X16hfhadljiWEJ1I-QK0uhtMpT3k_RcRJ3emhi/exec",
             {
                 method: "POST",
+				mode: "no-cors",
                 body: formData
             }
         );
@@ -657,13 +658,13 @@ form.addEventListener("submit", async function(e) {
         <footer class="bg-black text-white py-16 text-center">
             <div class="max-w-3xl mx-auto px-6">
                 <div class="border-t border-stone-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs tracking-[0.2em] text-stone-500 uppercase">
-                    <p>&copy; <span id="current-year"></span> Majestic Dawn |</p>
                     <div class="flex space-x-8 mt-6 md:mt-0">
-                        <a href="https://www.instagram.com/majesticdawnevents?igsh=ZTVxbjBvczFjZzh2" class="hover:text-white transition-colors">Instagram |</a>
+                        <a href="https://www.instagram.com/majesticdawnevents?igsh=ZTVxbjBvczFjZzh2" class="hover:text-white transition-colors">Instagram</a>
                     </div>
 				    <div class="flex space-x-8 mt-6 md:mt-0">
-                        info@majesticdawnevents.com |
+                        info@majesticdawnevents.com
                     </div>
+					<div>&copy; <span id="current-year"></span> Majestic Dawn</div>
                 </div>
             </div>
         </footer>
