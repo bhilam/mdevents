@@ -417,18 +417,12 @@ function handleSwipeGesture() {
     }
 }
 
-
 // GOOGLE SHEETS SUBMISSION
 const form = document.getElementById("bookingForm");
-
 form.addEventListener("submit", async function(e) {
-
     e.preventDefault();
-
     const formData = new FormData(form);
-
     try {
-
         await fetch(
             "https://script.google.com/macros/s/AKfycbxlMqLztP7LdugOQQPuAud8krNqT3X16hfhadljiWEJ1I-QK0uhtMpT3k_RcRJ3emhi/exec",
             {
@@ -439,18 +433,11 @@ form.addEventListener("submit", async function(e) {
         );
 
         document.getElementById("successMessage").classList.remove("hidden");
-		//alert("Inquiry submitted successfully!");
-
         form.reset();
-
     } catch(error) {
-
         console.error(error);
-
         alert("Submission failed.");
-
     }
-
 });
 
 document.getElementById("closeSuccess").addEventListener("click", () => {
@@ -462,13 +449,8 @@ document.getElementById("closeSuccess").addEventListener("click", () => {
 // ======================================
 // INITIALIZATION
 // ======================================
-
 document.addEventListener('DOMContentLoaded', () => {
-
     initCarousels();
-
     initTestimonialPreviews();
-
     updateTestimonials();
-
 });
